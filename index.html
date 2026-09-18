@@ -1106,6 +1106,18 @@ document.addEventListener(
 );
 
 </script>
+      <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const bgMusic = document.getElementById("bgMusic");
+
+// Start after the visitor's first interaction
+document.addEventListener("pointerdown", () => {
+    bgMusic.play().catch(() => {});
+}, { once: true });
+</script>
 
 </body>
 </html>
