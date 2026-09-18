@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no">
+
+<meta name="theme-color" content="#0b0d12">
+<meta name="description"
+      content="Marang Babu — Android explorer, Linux enthusiast, reverse engineering learner and Physics student.">
+
+<title>Marang Babu — Tech Space</title>
+
+<style>
+:root {
+    --bg: #0b0d12;
+    --surface: #11141b;
+    --surface-2: #151923;
+    --border: rgba(124, 92, 255, 0.20);
+
+    --indigo: #7c5cff;
+    --indigo-light: #9a86ff;
+
+    --text: #f2f0fa;
+    --muted: #a7a3b5;
+
+    --radius: 20px;
+}
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(124, 92, 255, 0.14),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ---------- LAYOUT ---------- */
+
+.container {
+    width: min(92%, 680px);
+    margin: auto;
+}
+
+section {
+    padding: 70px 0;
+}
+
+/* ---------- SMALL TEXT ---------- */
+
+.eyebrow {
+    color: var(--indigo-light);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-title {
+    font-size: 1.7rem;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    color: var(--muted);
+    font-size: 0.92rem;
+    margin-bottom: 28px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: auto;
+    display: flex;
+    align-items: flex-start;
+    text-align: center;
+    padding: 55px 0 75px;
+}
+
+.hero-content {
+    width: 100%;
+}
+
+.profile-wrap {
+    position: relative;
+    width: 145px;
+    height: 145px;
+    margin: 10px auto 25px;
+}
+
+.profile-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 50%;
+    border: 1px solid var(--indigo);
+    opacity: 0.7;
+    box-shadow:
+        0 0 25px rgba(124, 92, 255, 0.25);
+}
+
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid var(--bg);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 12vw, 4.3rem);
+    line-height: 1;
+    letter-spacing: -0.06em;
+    margin-bottom: 14px;
+}
+
+.hero h1 span {
+    color: var(--indigo-light);
+}
+
+.hero-description {
+    color: var(--muted);
+    max-width: 500px;
+    margin: auto;
+    font-size: 1rem;
+}
+
+.hero-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-top: 22px;
+    padding: 8px 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: rgba(124, 92, 255, 0.05);
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--indigo);
+    box-shadow: 0 0 10px var(--indigo);
+}
+
+/* ---------- BUTTON ---------- */
+
+.primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 26px;
+    padding: 12px 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: var(--indigo);
+    color: white;
+
+    font-size: 0.9rem;
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.primary-btn:active {
+    transform: scale(0.96);
+}
+
+/* ---------- CARDS ---------- */
+
+.card {
+    background: linear-gradient(
+        145deg,
+        rgba(255,255,255,0.025),
+        rgba(255,255,255,0.01)
+    );
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    padding: 22px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.20);
+}
+
+/* ---------- ABOUT ---------- */
+
+.about-text {
+    color: var(--muted);
+    font-size: 0.96rem;
+}
+
+.about-text strong {
+    color: var(--text);
+}
+
+/* ---------- INTERESTS ---------- */
+
+.interests {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.interest {
+    padding: 17px;
+
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 15px;
+
+    transition: 0.2s ease;
+}
+
+.interest:active {
+    transform: scale(0.97);
+    border-color: var(--border);
+}
+
+.interest-icon {
+    color: var(--indigo-light);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.interest h3 {
+    font-size: 0.92rem;
+    margin-bottom: 3px;
+}
+
+.interest p {
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+/* ---------- TECH JOURNEY ---------- */
+
+.timeline {
+    position: relative;
+    padding-left: 22px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 5px;
+    bottom: 5px;
+    width: 1px;
+    background: rgba(124, 92, 255, 0.35);
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 28px 20px;
+}
+
+.timeline-item:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 5px;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: var(--indigo);
+
+    box-shadow:
+        0 0 12px rgba(124,92,255,0.7);
+}
+
+.timeline-item h3 {
+    font-size: 0.95rem;
+}
+
+.timeline-item p {
+    color: var(--muted);
+    font-size: 0.78rem;
+}
+
+/* ---------- TERMINAL ---------- */
+
+.terminal {
+    overflow: hidden;
+    background: #090b10;
+    border: 1px solid rgba(124,92,255,0.22);
+    border-radius: 16px;
+}
+
+.terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 11px 14px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.terminal-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3b3f4a;
+}
+
+.terminal-title {
+    margin-left: 5px;
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+.terminal-body {
+    padding: 20px;
+    font-family: monospace;
+    font-size: 0.78rem;
+    color: #c9c4db;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+}
+
+.prompt {
+    color: var(--indigo-light);
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 13px;
+    margin-left: 3px;
+    vertical-align: -2px;
+    background: var(--indigo);
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ---------- PHILOSOPHY ---------- */
+
+.philosophy {
+    text-align: center;
+    padding: 28px 20px;
+}
+
+.philosophy-mark {
+    color: var(--indigo);
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.philosophy p {
+    color: var(--text);
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.philosophy small {
+    display: block;
+    color: var(--muted);
+    margin-top: 10px;
+    font-size: 0.75rem;
+}
+
+/* ---------- GOAL ---------- */
+
+.goal-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.goal-card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -60px;
+    top: -60px;
+
+    border-radius: 50%;
+    background: rgba(124,92,255,0.08);
+}
+
+.goal-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.goal-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- SOCIALS ---------- */
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 105px;
+
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+
+    transition: 0.2s ease;
+}
+
+.social:active {
+    transform: scale(0.95);
+    border-color: var(--indigo);
+}
+
+.social svg {
+    width: 27px;
+    height: 27px;
+
+    fill: var(--text);
+
+    margin-bottom: 9px;
+
+    transition: 0.2s ease;
+}
+
+.social span {
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+.social:active svg {
+    fill: var(--indigo-light);
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    padding: 30px 20px 95px;
+    text-align: center;
+}
+
+.footer-line {
+    width: 45px;
+    height: 2px;
+    margin: 0 auto 15px;
+
+    background: var(--indigo);
+    opacity: 0.7;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 0.7rem;
+}
+
+/* ---------- MOBILE NAV ---------- */
+
+.mobile-nav {
+    position: fixed;
+
+    left: 50%;
+    bottom: 15px;
+
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    padding: 7px;
+
+    background: rgba(17,20,27,0.92);
+    backdrop-filter: blur(14px);
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.4);
+}
+
+.mobile-nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 45px;
+    height: 38px;
+
+    border-radius: 11px;
+
+    color: var(--muted);
+    font-size: 0.68rem;
+
+    transition: 0.2s ease;
+}
+
+.mobile-nav a:active {
+    background: rgba(124,92,255,0.12);
+    color: var(--indigo-light);
+}
+
+/* ---------- DESKTOP SAFETY ---------- */
+
+@media (min-width: 700px) {
+
+    body {
+        background:
+            radial-gradient(
+                circle at 50% -10%,
+                rgba(124,92,255,0.15),
+                transparent 420px
+            ),
+            var(--bg);
+    }
+
+    .container {
+        width: min(90%, 720px);
+    }
+
+    .interests {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="container hero-content">
+
+    <div class="profile-wrap">
+        <img
+            class="profile"
+            src="https://imgdb.in/i/gAA9eUjaec.jpg"
+            alt="Marang Babu">
+    </div>
+
+    <div class="eyebrow">MYSELF</div>
+
+    <h1>
+        Marang <span>Babu</span>
+    </h1>
+
+    <p class="hero-description">
+        Physics student · Android explorer · Linux enthusiast ·
+        Future reverse engineer
+    </p>
+
+    <div class="hero-status">
+        <span class="status-dot"></span>
+        Currently exploring Android
+    </div>
+
+    <br>
+
+    <a href="#about" class="primary-btn">
+        Explore my space ↓
+    </a>
+
+</div>
+
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about">
+
+<div class="container">
+
+    <div class="eyebrow">01 — ABOUT</div>
+
+    <h2 class="section-title">
+        A little about me
+    </h2>
+
+    <p class="section-subtitle">
+        Not a traditional resume. Just my tech space.
+    </p>
+
+    <div class="card">
+
+        <p class="about-text">
+            Hey! I'm <strong>Marang Babu</strong>,
+            also known as <strong>Lambu</strong>.
+            I'm a Physics student who enjoys going beyond
+            simply using technology and actually understanding
+            how things work underneath.
+            <br><br>
+            My interests revolve around Android internals,
+            Linux, custom kernels, root, mobile security,
+            networking, reverse engineering and software.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= INTERESTS ================= -->
+
+<section id="interests">
+
+<div class="container">
+
+    <div class="eyebrow">02 — INTERESTS</div>
+
+    <h2 class="section-title">
+        Things I like exploring
+    </h2>
+
+    <p class="section-subtitle">
+        Curiosity usually starts with "what happens if..."
+    </p>
+
+    <div class="interests">
+
+        <div class="interest">
+            <div class="interest-icon">⚛</div>
+            <h3>Physics</h3>
+            <p>Understanding how the world works.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">▣</div>
+            <h3>Android</h3>
+            <p>ROMs, internals and customization.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">⌁</div>
+            <h3>Kernel</h3>
+            <p>Linux kernels and low-level systems.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">$_</div>
+            <h3>Linux</h3>
+            <p>Terminal, systems and experimentation.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">◈</div>
+            <h3>Security</h3>
+            <p>Learning mobile and system security.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">{ }</div>
+            <h3>Reverse Engineering</h3>
+            <p>Understanding software from the inside.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">&lt;/&gt;</div>
+            <h3>Web Development</h3>
+            <p>HTML, CSS, JavaScript and interfaces.</p>
+        </div>
+
+        <div class="interest">
+            <div class="interest-icon">◉</div>
+            <h3>Software</h3>
+            <p>Building, modifying and understanding software.</p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= JOURNEY ================= -->
+
+<section id="journey">
+
+<div class="container">
+
+    <div class="eyebrow">03 — TECH JOURNEY</div>
+
+    <h2 class="section-title">
+        Where the rabbit hole went
+    </h2>
+
+    <p class="section-subtitle">
+        One curiosity led to another.
+    </p>
+
+    <div class="card timeline">
+
+        <div class="timeline-item">
+            <h3>Android</h3>
+            <p>Started exploring Android customization.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Root</h3>
+            <p>Discovered what Android can do with deeper access.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Custom Kernels</h3>
+            <p>Started looking below the Android layer.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Linux</h3>
+            <p>Learning the system underneath Android.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>NetHunter</h3>
+            <p>Exploring mobile Linux and networking.</p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Reverse Engineering</h3>
+            <p>Learning how software works from the inside.</p>
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CURRENTLY LEARNING ================= -->
+
+<section id="learning">
+
+<div class="container">
+
+    <div class="eyebrow">04 — CURRENTLY LEARNING</div>
+
+    <h2 class="section-title">
+        Inside the terminal
+    </h2>
+
+    <p class="section-subtitle">
+        Current curiosity: Android internals.
+    </p>
+
+    <div class="terminal">
+
+        <div class="terminal-bar">
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-dot"></span>
+            <span class="terminal-title">
+                marang@android: ~
+            </span>
+        </div>
+
+        <div class="terminal-body">
+
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                learning android internals
+            </div>
+
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                studying kernels
+            </div>
+
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                exploring linux
+            </div>
+
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                understanding reverse engineering
+            </div>
+
+            <div class="terminal-line">
+                <span class="prompt">$</span>
+                building knowledge<span class="cursor"></span>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= PHILOSOPHY ================= -->
+
+<section>
+
+<div class="container">
+
+    <div class="card philosophy">
+
+        <div class="philosophy-mark">⌁</div>
+
+        <p>
+            "I don't just want to use technology.
+            I want to understand how it works."
+        </p>
+
+        <small>
+            — Marang Babu
+        </small>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= GOAL ================= -->
+
+<section id="goal">
+
+<div class="container">
+
+    <div class="eyebrow">05 — FUTURE</div>
+
+    <h2 class="section-title">
+        Where I'm heading
+    </h2>
+
+    <p class="section-subtitle">
+        The next level of the rabbit hole.
+    </p>
+
+    <div class="card goal-card">
+
+        <h3>
+            Reverse Engineering → Software Engineering
+        </h3>
+
+        <p>
+            Keep understanding systems at a deeper level,
+            learn how software is built, and eventually turn
+            that knowledge into software engineering.
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SOCIALS ================= -->
+
+<section id="socials">
+
+<div class="container">
+
+    <div class="eyebrow">06 — CONNECT</div>
+
+    <h2 class="section-title">
+        Find me online
+    </h2>
+
+    <p class="section-subtitle">
+        My actual profiles.
+    </p>
+
+    <div class="social-grid">
+
+        <!-- Instagram -->
+
+        <a
+            class="social"
+            href="https://www.instagram.com/_bhak__bsdk?stkn=d2xmdTNnem91MGhq"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram">
+
+            <svg viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5zm8.75 2.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/>
+            </svg>
+
+            <span>Instagram</span>
+
+        </a>
+
+
+        <!-- GitHub -->
+
+        <a
+            class="social"
+            href="https://github.com/marangmurmu610-netizen"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub">
+
+            <svg viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-2.15c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.96.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.28-5.23-5.69 0-1.26.45-2.29 1.18-3.1-.12-.29-.51-1.47.11-3.06 0 0 .96-.31 3.15 1.18a10.94 10.94 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.59.23 2.77.11 3.06.73.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.25 5.68.41.35.77 1.04.77 2.1v3.11c0 .3.21.66.79.55C20.22 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/>
+            </svg>
+
+            <span>GitHub</span>
+
+        </a>
+
+
+        <!-- Telegram -->
+
+        <a
+            class="social"
+            href="https://t.me/Marang_da"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Telegram">
+
+            <svg viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <path d="M21.94 3.35 18.8 20.1c-.24 1.18-.86 1.47-1.75.92l-4.82-3.55-2.33 2.24c-.26.26-.48.48-.98.48l.35-4.9 8.92-8.06c.39-.35-.09-.55-.61-.2L6.56 13.88 1.81 12.39c-1.03-.32-1.05-1.03.22-1.53L20.6 3.48c.87-.32 1.63.2 1.34-.13z"/>
+            </svg>
+
+            <span>Telegram</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-line"></div>
+
+    <p>
+        © 2026–27 Marang Babu. All rights reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<nav class="mobile-nav">
+
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#interests">Tech</a>
+    <a href="#learning">Learn</a>
+    <a href="#socials">Social</a>
+
+</nav>
+
+
+<script>
+
+/* ---------- Smooth active navigation ---------- */
+
+const navLinks = document.querySelectorAll(".mobile-nav a");
+
+const sections = document.querySelectorAll(
+    "section[id]"
+);
+
+const observer = new IntersectionObserver(
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+                navLinks.forEach(link => {
+                    link.style.color = "";
+                    link.style.background = "";
+                });
+
+                const active =
+                    document.querySelector(
+                        `.mobile-nav a[href="#${entry.target.id}"]`
+                    );
+
+                if (active) {
+                    active.style.color =
+                        "var(--indigo-light)";
+
+                    active.style.background =
+                        "rgba(124,92,255,0.10)";
+                }
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.35
+    }
+);
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+
+/* ---------- Prevent accidental zoom on double tap ---------- */
+
+let lastTouchEnd = 0;
+
+document.addEventListener(
+    "touchend",
+    function(event) {
+
+        const now = Date.now();
+
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+
+        lastTouchEnd = now;
+
+    },
+    false
+);
+
+</script>
+
+</body>
+</html>
