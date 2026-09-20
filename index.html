@@ -8,9 +8,9 @@
 
 <meta name="theme-color" content="#0b0d12">
 <meta name="description"
-      content="Marang Babu — Android explorer, Linux enthusiast, reverse engineering learner and Physics student.">
+      content="M∆RANG B∆BU— Android explorer, Linux enthusiast, reverse engineering learner and Physics student.">
 
-<title>Marang Babu — Tech Space</title>
+<title>M∆RANG B∆BU — Tech Space</title>
 
 <style>
 :root {
@@ -101,17 +101,6 @@ section {
     margin-bottom: 10px;
 }
 
- .visitor-counter {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 6px 12px;
-    border: 1px solid rgba(120, 90, 255, 0.25);
-    border-radius: 8px;
-    font-size: 10px;
-    opacity: 0.7;
-    background: rgba(120, 90, 255, 0.05);
- }     
-
 .section-subtitle {
     color: var(--muted);
     font-size: 0.92rem;
@@ -130,6 +119,17 @@ section {
 
 .hero-content {
     width: 100%;
+}
+
+.visitor-counter {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border: 1px solid rgba(120, 90, 255, 0.25);
+    border-radius: 8px;
+    font-size: 10px;
+    opacity: 0.7;
+    background: rgba(120, 90, 255, 0.05);
 }
 
 .profile-wrap {
@@ -576,6 +576,8 @@ footer p {
     transition: 0.2s ease;
 }
 
+
+
 .mobile-nav a:active {
     background: rgba(124,92,255,0.12);
     color: var(--indigo-light);
@@ -624,7 +626,7 @@ footer p {
     <div class="eyebrow">MYSELF</div>
 
     <h1>
-        M∆R∆NG <span>B∆BU</span>
+        M∆RANG <span>B∆BU</span>
     </h1>
 
     <p class="hero-description">
@@ -634,7 +636,7 @@ footer p {
 
     <div class="hero-status">
         <span class="status-dot"></span>
-        Currently exploring Android
+        Currently exploring Android....
     </div>
 
     <br>
@@ -1031,7 +1033,6 @@ footer p {
     </div>
 </footer>
 
-
 <!-- ================= MOBILE NAV ================= -->
 
 <nav class="mobile-nav">
@@ -1115,46 +1116,63 @@ document.addEventListener(
 );
 
 </script>
-      <audio id="bgMusic" loop preload="auto">
-    <source src="./music.mp3" type="audio/mpeg">
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 const bgMusic = document.getElementById("bgMusic");
 
-function startMusic() {
-    bgMusic.play()
-        .then(() => {
-            console.log("Music started 🎵");
-            document.removeEventListener("pointerdown", startMusic);
-        })
-        .catch((error) => {
-            console.log("Playback blocked:", error);
-        });
-}
-
-document.addEventListener("pointerdown", startMusic);
-</script><audio id="bgMusic" loop preload="auto">
-    <source src="./music.mp3" type="audio/mpeg">
-</audio>
-
-<script>
-const bgMusic = document.getElementById("bgMusic");
-
-function startMusic() {
-    bgMusic.play()
-        .then(() => {
-            console.log("Music started 🎵");
-            document.removeEventListener("pointerdown", startMusic);
-        })
-        .catch((error) => {
-            console.log("Playback blocked:", error);
-        });
-}
-
-document.addEventListener("pointerdown", startMusic);
+// Start after the visitor's first interaction
+document.addEventListener("pointerdown", () => {
+    bgMusic.play().catch(() => {});
+}, { once: true });
 </script>
-      <script>
+
+<script type="module">
+import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    runTransaction
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCd6e-psGHsyf_fBRPZ5FZCRwxE96GzuUU",
+    authDomain: "visitor-c2be9.firebaseapp.com",
+    databaseURL: "https://visitor-c2be9-default-rtdb.firebaseio.com",
+    projectId: "visitor-c2be9",
+    storageBucket: "visitor-c2be9.firebasestorage.app",
+    messagingSenderId: "937049664378",
+    appId: "1:937049664378:web:e086580c4eccbbe62d84c3"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const visitorRef = ref(db, "visitors/total");
+
+runTransaction(visitorRef, (currentValue) => {
+    return (currentValue || 0) + 1;
+}).then((result) => {
+
+    const total = result.snapshot.val();
+
+    const counter = document.getElementById("visitorCount");
+
+    if (counter) {
+        counter.textContent = total;
+    }
+
+}).catch((error) => {
+    console.error("Visitor counter error:", error);
+});
+</script>
+
+<script>
 document.addEventListener("pointerdown", function(event) {
 
     const flowers = ["🌸", "🌺", "🌼", "🌷", "💮"];
@@ -1202,50 +1220,7 @@ document.addEventListener("pointerdown", function(event) {
         }, 1800);
     }
 });
-      </script>
-// Start after the visitor's first interaction
-document.addEventListener("pointerdown", () => {
-    bgMusic.play().catch(() => {});
-}, { once: true });
 </script>
-
-<script type="module">
-import { initializeApp }
-    from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-
-import {
-    getDatabase,
-    ref,
-    runTransaction
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-database.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyCd6e-psGHsyf_fBRPZ5FZCRwxE96GzuUU",
-    authDomain: "visitor-c2be9.firebaseapp.com",
-    databaseURL: "https://visitor-c2be9-default-rtdb.firebaseio.com",
-    projectId: "visitor-c2be9",
-    storageBucket: "visitor-c2be9.firebasestorage.app",
-    messagingSenderId: "937049664378",
-    appId: "1:937049664378:web:e086580c4eccbbe62d84c3"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-const visitorRef = ref(db, "visitors/total");
-
-runTransaction(visitorRef, (currentValue) => {
-    return (currentValue || 0) + 1;
-}).then((result) => {
-
-    const total = result.snapshot.val();
-
-    const counter = document.getElementById("visitorCount");
-
-    if (counter) {
-        counter.textContent = total;
-    }  
-          </script>
 
 </body>
 </html>
