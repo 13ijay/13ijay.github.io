@@ -1109,8 +1109,18 @@ document.addEventListener(
             event.preventDefault();
         }
 
-        lastTouchEnd = now;
+        let lastTouchEnd = 0;
 
+document.addEventListener(
+    "touchend",
+    function(event) {
+        const now = Date.now();
+
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+
+        lastTouchEnd = now;
     },
     false
 );
@@ -1124,10 +1134,17 @@ document.addEventListener(
 <script>
 const bgMusic = document.getElementById("bgMusic");
 
-// Start after the visitor's first interaction
-document.addEventListener("pointerdown", () => {
-    bgMusic.play().catch(() => {});
-}, { once: true });
+function startMusic() {
+    bgMusic.play()
+        .then(() => {
+            document.removeEventListener("pointerdown", startMusic);
+        })
+        .catch(() => {
+            // Keep listener active if playback fails
+        });
+}
+
+document.addEventListener("pointerdown", startMusic);
 </script>
 
 <script type="module">
