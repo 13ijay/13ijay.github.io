@@ -8,7 +8,7 @@
 
 <meta name="theme-color" content="#0b0d12">
 <meta name="description"
-      content="M∆RANG B∆BU— Android explorer, Linux enthusiast, reverse engineering learner and Physics student.">
+      content="M∆RANG B∆BU— Android explorer, Linux enthusiast, reverse engineering learner and Physics major.">
 
 <title>M∆RANG B∆BU — Tech Space</title>
 
@@ -467,43 +467,37 @@ section {
 
 .social-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+    max-width: 420px;
+    margin: 0 auto;
 }
 
 .social {
+    min-height: 82px;
+    padding: 10px 5px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    min-height: 105px;
-
     background: var(--surface);
     border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 16px;
+    border-radius: 13px;
 
     transition: 0.2s ease;
-}
-
-.social:active {
-    transform: scale(0.95);
-    border-color: var(--indigo);
 }
 
 .social svg {
-    width: 27px;
-    height: 27px;
-
+    width: 22px;
+    height: 22px;
     fill: var(--text);
-
-    margin-bottom: 9px;
-
-    transition: 0.2s ease;
+    margin-bottom: 6px;
 }
 
 .social span {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     color: var(--muted);
 }
 
@@ -630,7 +624,7 @@ footer p {
     </h1>
 
     <p class="hero-description">
-        Physics student · Android explorer · Linux enthusiast ·
+        Physics major•Android explorer • Linux enthusiast •
         Future reverse engineer
     </p>
 
@@ -671,7 +665,7 @@ footer p {
         <p class="about-text">
             Hey! I'm <strong>Marang Babu</strong>,
             also known as <strong>Lambu</strong>.
-            I'm a Physics student who enjoys going beyond
+            I'm a <strong><font color=#ff36c6> Physics student </font></strong> who enjoys going beyond
             simply using technology and actually understanding
             how things work underneath.
             <br><br>
@@ -1015,6 +1009,25 @@ footer p {
             <span>Telegram</span>
 
         </a>
+        
+       <!-- Website -->
+
+<a
+    class="social"
+    href="https://your-website.com"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Website">
+
+    <svg viewBox="0 0 24 24"
+         xmlns="http://www.w3.org/2000/svg">
+
+        <path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.92 9h-3.01a15.7 15.7 0 0 0-1.13-5.02A8.03 8.03 0 0 1 18.92 11zM12 4c.83 1.15 1.55 3.34 1.82 7h-3.64C10.45 7.34 11.17 5.15 12 4zM9.22 5.98A15.7 15.7 0 0 0 8.09 11H5.08a8.03 8.03 0 0 1 4.14-5.02zM5.08 13h3.01a15.7 15.7 0 0 0 1.13 5.02A8.03 8.03 0 0 1 5.08 13zm5.1 0h3.64c-.27 3.66-.99 5.85-1.82 7-.83-1.15-1.55-3.34-1.82-7zm4.6 5.02A15.7 15.7 0 0 0 15.91 13h3.01a8.03 8.03 0 0 1-4.14 5.02z"/>
+    </svg>
+
+    <span>Website</span>
+
+</a>
 
     </div>
 
@@ -1109,18 +1122,8 @@ document.addEventListener(
             event.preventDefault();
         }
 
-        let lastTouchEnd = 0;
-
-document.addEventListener(
-    "touchend",
-    function(event) {
-        const now = Date.now();
-
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-
         lastTouchEnd = now;
+
     },
     false
 );
@@ -1134,17 +1137,10 @@ document.addEventListener(
 <script>
 const bgMusic = document.getElementById("bgMusic");
 
-function startMusic() {
-    bgMusic.play()
-        .then(() => {
-            document.removeEventListener("pointerdown", startMusic);
-        })
-        .catch(() => {
-            // Keep listener active if playback fails
-        });
-}
-
-document.addEventListener("pointerdown", startMusic);
+// Start after the visitor's first interaction
+document.addEventListener("pointerdown", () => {
+    bgMusic.play().catch(() => {});
+}, { once: true });
 </script>
 
 <script type="module">
