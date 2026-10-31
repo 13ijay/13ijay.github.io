@@ -1358,8 +1358,18 @@
    <p id="modalBody"></p>
   </div>
  </div>
+ <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+ </audio>
  
  <script>
+  const bgMusic=document.getElementById("bgMusic");
+function startMusic(){
+    bgMusic.play().then(()=>{
+        document.removeEventListener("pointerdown",startMusic);
+    }).catch(()=>{});
+}
+document.addEventListener("pointerdown",startMusic);
   (() => {
    const root = document.documentElement,
     $ = id => document.getElementById(id);
